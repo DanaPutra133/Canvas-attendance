@@ -22,7 +22,9 @@ const {
 const {
   attendanceLeaderController
 } =  require("../controllers/toolsController/attendanceLeaderController")
-
+const {
+  attendanceListController
+} = require("../controllers/toolsController/attendanceListController")
 router.post("/attendance-card", upload.none(), absenCardControler)
 
 router.post("/discord-card", upload.none(), rankCardController)
@@ -30,5 +32,7 @@ router.post("/discord-card", upload.none(), rankCardController)
 router.post("/attendance-success", upload.none(), attendanceSuccesController),
 
 router.post("/attendance-leaderboard", upload.none(), attendanceLeaderController)
+
+router.post("/attendance-list", upload.none(), attendanceListController)
 
 module.exports = router;

@@ -13,23 +13,23 @@ const {
   cardSuccesImlek,
 } = require("../controllers/eventsControllercard/imlek/cardSuccesImlekController");
 const {
-  absenCardControler
-} =  require("../controllers/toolsController/cardAbsenController")
+  absenCardImlekController,
+} = require("../controllers/eventsControllercard/imlek/cardAbsenImlekController");
 const {
   rankCardController
 } = require("../controllers/toolsController/rankCardController")
 const {
-  attendanceLeaderController
-} =  require("../controllers/toolsController/attendanceLeaderController")
+  attendanceLeaderImlekController,
+} = require("../controllers/eventsControllercard/imlek/attendanceLeaderImlekController");
 const {
-  attendanceListController
-} = require("../controllers/toolsController/attendanceListController")
+  attendanceListImlekController,
+} = require("../controllers/eventsControllercard/imlek/attendanceListImlekController");
 
 
-router.post("/attendance-card", upload.none(), absenCardControler)
+router.post("/attendance-card", upload.none(), absenCardImlekController);
 router.post("/discord-card", upload.none(), rankCardController)
-router.post("/attendance-leaderboard", upload.none(), attendanceLeaderController)
-router.post("/attendance-list", upload.none(), attendanceListController)
+router.post("/attendance-leaderboard", upload.none(), attendanceLeaderImlekController)
+router.post("/attendance-list", upload.none(), attendanceListImlekController);
 router.post("/attendance-success", upload.none(), cardSuccesImlek);
 
 

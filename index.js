@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const morgan = require("morgan");
 const requestIp = require("request-ip");
-const toolsRoutes = require("./routes/toolsRoutes")
+// const toolsRoutes = require("./routes/toolsRoutes")
 const { createCanvas, loadImage, registerFont, Path2D } = require("canvas");
 
 const os = require("os");
@@ -41,6 +41,21 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT;
+
+require("dotenv").config();
+
+// Ambil mode dari env, default ke 'normal' jika tidak diisi
+const mode = process.env.MODE;
+console.log(`Server berjalan dalam mode: ${mode}`);
+
+const routesConfig = {
+  normal: "./routes/toolsRoutes",
+  imlek: "./routes/toolsimlek",
+  ramadan: "./routes/toolsramadan",
+  halloween: "./routes/toolshalloween",
+};
+
+const selectedRoute = routesConfig[mode] || routesConfig["normal"];
 
 app.use(morgan("dev"));
 app.use(requestIp.mw());
@@ -100,8 +115,8 @@ app.get("/", (req, res) => {
 });
 
 // =============== FITUR ===============
-app.use(toolsRoutes);
-
+// app.use(toolsRoutes);
+app.use("", require(selectedRoute));
 
 
 // app.get('/', (req, res) => {

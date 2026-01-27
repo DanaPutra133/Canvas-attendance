@@ -1,6 +1,6 @@
 const axios = require("axios");
 const Jimp = require("jimp");
-
+const path = require("path");
 const { createCanvas, loadImage } = require("canvas");
 
 
@@ -40,6 +40,10 @@ const absenCardControler = async (req, res) => {
     const height = 282;
     const canvas = createCanvas(width, height);
     const ctx = canvas.getContext("2d");
+
+       const iconsFire = await loadImage(
+           path.join(__dirname, "../../assets/clear/fire.png"),
+         );
 
     if (backgroundUrl) {
       const bgResponse = await axios.get(backgroundUrl, { responseType: "arraybuffer" });
@@ -119,9 +123,14 @@ ctx.fillRect(270, 110, 400, 2);
 ctx.font = '500 22px "sans-serif"';
 ctx.fillStyle = "#cccccc";
 ctx.fillText("STREAK ABSENSI SAAT INI", 270, 140); 
+
+ctx.drawImage(iconsFire, 270, 155, 55, 60);
+
+// --- Rendering Teks Jumlah Streak ---
+const streakCountText = `${streakCount} Hari`;
 ctx.font = 'bold 62px "sans-serif"';
 ctx.fillStyle = `#${primaryColor}`;
-ctx.fillText(`🔥 ${streakCount} Hari`, 270, 210);
+ctx.fillText(`${streakCountText}`, 340, 210);
 if (lastAbsenDate) {
   ctx.font = '18px "sans-serif"';
   ctx.fillStyle = "rgba(255, 255, 255, 0.5)";

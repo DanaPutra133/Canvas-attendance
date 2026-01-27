@@ -1,6 +1,6 @@
 const axios = require("axios");
 const Jimp = require("jimp");
-
+const path = require("path");
 const { createCanvas, loadImage} = require("canvas");
 
 const attendanceSuccesController = async (req, res) => {
@@ -26,6 +26,10 @@ const attendanceSuccesController = async (req, res) => {
     const height = 282;
     const canvas = createCanvas(width, height);
     const ctx = canvas.getContext("2d");
+
+     const iconsFire = await loadImage(
+       path.join(__dirname, "../../assets/clear/fire.png"),
+     );
 
     if (backgroundUrl) {
       const bgResponse = await axios.get(backgroundUrl, { responseType: "arraybuffer" });
@@ -90,16 +94,17 @@ const attendanceSuccesController = async (req, res) => {
     ctx.fillText("ABSENSI BERHASIL DICATAT!", 275, 140);
     ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
     ctx.fillRect(275, 155, 450, 1.5);
-   
+
+   ctx.drawImage(iconsFire, 280, 165, 55, 60);
     const streakText = `${newStreak} Hari Streak`;
    
-    ctx.font = 'bold 60px "sans-serif"';
+   ctx.font = 'bold 60px "sans-serif"';
     
     const gradient = ctx.createLinearGradient(260, 0, 600, 0);
     gradient.addColorStop(1, "#ffffff");
     
     ctx.fillStyle = "#FFAC33";
-    ctx.fillText(`🔥 ${streakText}`, 275, 220);
+    ctx.fillText(`${streakText}`, 345, 220);
     ctx.save();
     ctx.globalAlpha = 0.4;
     ctx.font = 'bold 100px "sans-serif"';

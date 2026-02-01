@@ -32,10 +32,6 @@ const absenCardControler = async (req, res) => {
       });
     }
 
-    if (streakCount > 31){
-        return res.status(400).json({message: "Streak tidak boleh lewat dari 32 hari!"})
-    }
-
     const width = 934;
     const height = 282;
     const canvas = createCanvas(width, height);

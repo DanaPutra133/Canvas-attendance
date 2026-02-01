@@ -55,7 +55,7 @@ const absenCardRamadhanController = async (req, res) => {
     ctx.fillStyle = "#01261a";
     ctx.fillRect(0, 0, width, height);
 
-    // 4. Background URL dengan Blur & Anti-Gepeng (Logic Jimp)
+    // 4. Background URL dengan Blur 
     if (backgroundUrl) {
       try {
         const bgResponse = await axios.get(backgroundUrl, {
@@ -86,7 +86,7 @@ const absenCardRamadhanController = async (req, res) => {
           sx = 0;
           sy = (finalBgImage.height - sHeight) / 2;
         }
-        ctx.globalAlpha = 0.4; // Overlay agar tema Ramadhan tetap terlihat
+        ctx.globalAlpha = 0.4; 
         ctx.drawImage(
           finalBgImage,
           sx,
@@ -104,7 +104,7 @@ const absenCardRamadhanController = async (req, res) => {
       }
     }
 
-    // 5. Overlay Pattern Islami (Anti-Gepeng)
+    // 5. Overlay Pattern Islami
     ctx.globalAlpha = 0.08;
     const patternRatio = islamicPatternImg.width / islamicPatternImg.height;
     const canvasRatio = width / height;

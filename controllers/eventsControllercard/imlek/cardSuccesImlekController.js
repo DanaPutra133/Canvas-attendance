@@ -22,7 +22,7 @@ const cardSuccesImlek = async (req, res) => {
       path.join(__dirname, "../../../assets/imlek/imlek1.png"),
     );
     const goldDecorImg = await loadImage(
-      path.join(__dirname, "../../../assets/imlek/imlek2.png"),
+      path.join(__dirname, "../../../assets/imlek/kudaemas.png"),
     );
     const bgGradient = ctx.createLinearGradient(0, 0, width, height);
     bgGradient.addColorStop(0, "#8B0000");
@@ -108,7 +108,7 @@ const cardSuccesImlek = async (req, res) => {
     const goldTextGradient = ctx.createLinearGradient(270, 0, 500, 0);
     goldTextGradient.addColorStop(0, "#FFD700");
     goldTextGradient.addColorStop(1, "#FFFACD");
-    ctx.drawImage(goldDecorImg, 240, 150, 100, 100);
+    ctx.drawImage(goldDecorImg, 240, 160, 80, 80);
 
     ctx.font = 'bold 60px "sans-serif"';
     ctx.fillStyle = goldTextGradient;

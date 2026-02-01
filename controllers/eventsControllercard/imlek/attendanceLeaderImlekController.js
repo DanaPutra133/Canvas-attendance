@@ -32,7 +32,7 @@ const attendanceLeaderImlekController = async (req, res) => {
       path.join(__dirname, "../../../assets/imlek/imlek1.png"),
     );
     const goldDecorImg = await loadImage(
-      path.join(__dirname, "../../../assets/imlek/imlek2.png"),
+      path.join(__dirname, "../../../assets/imlek/kudaemas.png"),
     );
 
     // 1. Background Merah Gradasi 

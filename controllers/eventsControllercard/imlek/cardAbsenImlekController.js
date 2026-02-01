@@ -43,7 +43,7 @@ const absenCardImlekController = async (req, res) => {
       path.join(__dirname, "../../../assets/imlek/imlek1.png"),
     );
     const goldDecorImg = await loadImage(
-      path.join(__dirname, "../../../assets/imlek/imlek2.png"),
+      path.join(__dirname, "../../../assets/imlek/kudaemas.png"),
     );
 
     // 3. Background Merah Gradasi Dasar
@@ -154,7 +154,7 @@ const absenCardImlekController = async (req, res) => {
     ctx.fillRect(270, 155, 400, 2);
 
     // Ikon Naga Emas (goldDecorImg)
-    ctx.drawImage(goldDecorImg, 240, 150, 100, 100);
+    ctx.drawImage(goldDecorImg, 240, 160, 80, 80);
 
     // Teks Streak dengan Gradient Emas
     const goldTextGradient = ctx.createLinearGradient(270, 0, 500, 0);

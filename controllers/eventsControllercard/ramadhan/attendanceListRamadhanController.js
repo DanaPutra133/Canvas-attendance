@@ -140,7 +140,7 @@ const attendanceListRamadhanController = async (req, res) => {
     ctx.fill();
 
     ctx.textAlign = "center";
-    ctx.font = 'bold 24px "sans-serif"';
+    ctx.font = 'bold 20px "sans-serif"';
     ctx.fillStyle = "#FFFFFF";
     ctx.fillText(
       `TOTAL HADIR: ${attendanceData.length} PESERTA`,

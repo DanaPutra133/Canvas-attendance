@@ -16,8 +16,6 @@ const absenCardRamadhanController = async (req, res) => {
       streakCount,
       lastAbsenDate,
       status = "online",
-      backgroundUrl,
-      blurValue = 0,
     } = req.body;
 
     // 1. Validasi Input
@@ -55,54 +53,6 @@ const absenCardRamadhanController = async (req, res) => {
     ctx.fillStyle = "#01261a";
     ctx.fillRect(0, 0, width, height);
 
-    // 4. Background URL dengan Blur 
-    if (backgroundUrl) {
-      try {
-        const bgResponse = await axios.get(backgroundUrl, {
-          responseType: "arraybuffer",
-        });
-        let backgroundBuffer = Buffer.from(bgResponse.data);
-
-        const blurAmount = parseInt(blurValue);
-        if (blurAmount > 0) {
-          const jimpImage = await Jimp.read(backgroundBuffer);
-          jimpImage.blur(Math.min(blurAmount, 100));
-          backgroundBuffer = await jimpImage.getBufferAsync(Jimp.MIME_PNG);
-        }
-
-        const finalBgImage = await loadImage(backgroundBuffer);
-        const imgRatio = finalBgImage.width / finalBgImage.height;
-        const canvasRatio = width / height;
-        let sx, sy, sWidth, sHeight;
-
-        if (imgRatio > canvasRatio) {
-          sHeight = finalBgImage.height;
-          sWidth = sHeight * canvasRatio;
-          sx = (finalBgImage.width - sWidth) / 2;
-          sy = 0;
-        } else {
-          sWidth = finalBgImage.width;
-          sHeight = sWidth / canvasRatio;
-          sx = 0;
-          sy = (finalBgImage.height - sHeight) / 2;
-        }
-        ctx.globalAlpha = 0.4; 
-        ctx.drawImage(
-          finalBgImage,
-          sx,
-          sy,
-          sWidth,
-          sHeight,
-          0,
-          0,
-          width,
-          height,
-        );
-        ctx.globalAlpha = 1.0;
-      } catch (e) {
-        console.log("BG Error:", e.message);
-      }
-    }
 
     // 5. Overlay Pattern Islami
     ctx.globalAlpha = 0.08;
@@ -152,7 +102,7 @@ const absenCardRamadhanController = async (req, res) => {
     }
 
     // Status Circle (Online/Idle/DnD)
-    const statusColors = { online: "#43B581", idle: "#FAA61A", dnd: "#F04747" };
+    const statusColors = { online: "#43B581", idle: "#FAA61A", dnd: "#F04747", offline: "#747F8D" };
     ctx.fillStyle = "#1e1e1e";
     ctx.beginPath();
     ctx.arc(205, 195, 25, 0, Math.PI * 2, true);

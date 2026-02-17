@@ -147,7 +147,7 @@ const absenCardImlekController = async (req, res) => {
     // Status Sukses
     ctx.font = '600 22px "sans-serif"';
     ctx.fillStyle = "#FFD700";
-    ctx.fillText("ABSENSI BERHASIL DICATAT!", 270, 140);
+    ctx.fillText("STREAK ABSENSI SAAT INI", 270, 140);
 
     // Garis Pemisah
     ctx.fillStyle = "rgba(255, 215, 0, 0.3)";

@@ -123,9 +123,9 @@ const absenCardRamadhanController = async (req, res) => {
     // Subtitle
     ctx.font = '600 22px "sans-serif"';
     ctx.fillStyle = "#D4AF37";
-    ctx.fillText("ABSENSI BERHASIL DICATAT!", 280, 140);
+    ctx.fillText("STREAK ABSENSI SAAT INI", 280, 140);
 
-    // Garis Pemisah Gradient
+    // Garis Pemisah Gradient 
     const lineGradient = ctx.createLinearGradient(280, 0, 730, 0);
     lineGradient.addColorStop(0, "rgba(212, 175, 55, 0.8)");
     lineGradient.addColorStop(1, "rgba(212, 175, 55, 0)");
